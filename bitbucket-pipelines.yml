@@ -1,0 +1,14 @@
+# This uses a consolidated script from http://bitbucket.org/tangibleinc/tangible-pipeline
+image: php:7.3.8-fpm
+pipelines:
+  # On every commit
+  default:
+    - step:
+        script:
+          - curl -s -L "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/tangibleinc/tangible-pipeline/downloads/run" > run && chmod +x run && ./run
+  # On every version tag
+  tags:
+    "*":
+      - step:
+          script:
+            - curl -s -L "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/tangibleinc/tangible-pipeline/downloads/run" > run && chmod +x run && ./run

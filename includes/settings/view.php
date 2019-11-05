@@ -8,11 +8,10 @@ $user_url_prefix = @$settings['upvoty_user_url_prefix'];
 
 $jwt_private_key_url =
   'https://'
-  .(!empty($user_url_prefix) ? $user_url_prefix : 'USER_PREFIX')
-  .".upvoty.com/customers/accountSettings/auth/"
-;
+  . ( ! empty( $user_url_prefix ) ? $user_url_prefix : 'USER_PREFIX' )
+  . '.upvoty.com/customers/accountSettings/auth/';
 
-$remote_sso_settings_url_suffix = "upvoty.com/customers/accountSettings/remote-sso/";
+$remote_sso_settings_url_suffix = 'upvoty.com/customers/accountSettings/remote-sso/';
 
 ?>
 <fieldset>
@@ -46,7 +45,7 @@ $remote_sso_settings_url_suffix = "upvoty.com/customers/accountSettings/remote-s
     </p>
     <p>
     <?=
-    empty($user_url_prefix) ? "https://USER_PREFIX.{$remote_sso_settings_url_suffix}"
+    empty( $user_url_prefix ) ? "https://USER_PREFIX.{$remote_sso_settings_url_suffix}"
       : <<<HTML
 
 <a href="https://{$user_url_prefix}.{$remote_sso_settings_url_suffix}" target="_blank">
@@ -64,7 +63,7 @@ HTML
     <li>
       <p>Generate a <b>private key</b> and enter it in the setting field above.</p>
       <p><?=
-      empty($user_url_prefix) ? $jwt_private_key_url
+      empty( $user_url_prefix ) ? $jwt_private_key_url
         : <<<HTML
 
 <a href="$jwt_private_key_url" target="_blank">$jwt_private_key_url</a>

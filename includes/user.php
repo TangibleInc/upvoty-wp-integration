@@ -17,7 +17,7 @@
   $settings = $upvoty->get_extended_settings();
 
   if ( empty( $settings['jwt_private_key'] ) ) {
-    trigger_error("JWT private key is required for Upvoty WP", E_USER_WARNING);
+    trigger_error( 'JWT private key is required for Upvoty WP', E_USER_WARNING );
     return;
   }
   $private_key = $settings['jwt_private_key'];

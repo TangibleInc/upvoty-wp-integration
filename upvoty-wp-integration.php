@@ -32,16 +32,16 @@ class UpvotyWP {
 
     $upvoty->plugin = $framework->register_plugin(
       [
-        'name'           => 'upvoty-wp-integration',
-        'title'          => 'Upvoty WP Integration',
-        'setting_prefix' => 'upvoty_wp',
+        'name'                => 'upvoty-wp-integration',
+        'title'               => 'Upvoty WP Integration',
+        'setting_prefix'      => 'upvoty_wp',
         'settings_menu_title' => 'Upvoty WP',
 
-        'version'        => UPVOTY_WP_VERSION,
-        'file_path'      => __FILE__,
-        'base_path'      => plugin_basename( __FILE__ ),
-        'dir_path'       => plugin_dir_path( __FILE__ ),
-        'url'            => plugins_url( '/', __FILE__ ),
+        'version'             => UPVOTY_WP_VERSION,
+        'file_path'           => __FILE__,
+        'base_path'           => plugin_basename( __FILE__ ),
+        'dir_path'            => plugin_dir_path( __FILE__ ),
+        'url'                 => plugins_url( '/', __FILE__ ),
       ]
     );
 
