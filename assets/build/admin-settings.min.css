@@ -1,0 +1,25 @@
+.inline {
+  display: inline; }
+
+.upvoty-wp-integration-settings-tab-settings {
+  margin: 20px 0; }
+  .upvoty-wp-integration-settings-tab-settings fieldset {
+    margin: 15px 0 25px; }
+  .upvoty-wp-integration-settings-tab-settings label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.125em;
+    font-weight: 500;
+    cursor: default; }
+  .upvoty-wp-integration-settings-tab-settings input[type=text],
+  .upvoty-wp-integration-settings-tab-settings input[type=password] {
+    width: 220px; }
+  .upvoty-wp-integration-settings-tab-settings .field-description {
+    margin: 10px 5px; }
+  .upvoty-wp-integration-settings-tab-settings input.field-jwt-private-key {
+    width: 300px; }
+  .upvoty-wp-integration-settings-tab-settings .submit {
+    margin: 0 0 1.5rem;
+    padding: 0; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9hZG1pbi1zZXR0aW5ncy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZUFBZSxFQUFBOztBQUdqQjtFQUNFLGNBQWMsRUFBQTtFQURoQjtJQUlJLG1CQUFtQixFQUFBO0VBSnZCO0lBT0ksY0FBYztJQUNkLG1CQUFtQjtJQUNuQixrQkFBa0I7SUFDbEIsZ0JBQWdCO0lBQ2hCLGVBQWUsRUFBQTtFQVhuQjs7SUFlSSxZQUFZLEVBQUE7RUFmaEI7SUFrQkksZ0JBQWdCLEVBQUE7RUFsQnBCO0lBcUJJLFlBQVksRUFBQTtFQXJCaEI7SUF3Qkksa0JBQWtCO0lBQ2xCLFVBQVUsRUFBQSIsImZpbGUiOiJhZG1pbi1zZXR0aW5ncy5taW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmlubGluZSB7XG4gIGRpc3BsYXk6IGlubGluZTs7XG59XG5cbi51cHZvdHktd3AtaW50ZWdyYXRpb24tc2V0dGluZ3MtdGFiLXNldHRpbmdzIHtcbiAgbWFyZ2luOiAyMHB4IDA7XG5cbiAgZmllbGRzZXQge1xuICAgIG1hcmdpbjogMTVweCAwIDI1cHg7XG4gIH1cbiAgbGFiZWwge1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gICAgZm9udC1zaXplOiAxLjEyNWVtO1xuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XG4gICAgY3Vyc29yOiBkZWZhdWx0O1xuICB9XG4gIGlucHV0W3R5cGU9dGV4dF0sXG4gIGlucHV0W3R5cGU9cGFzc3dvcmRdIHtcbiAgICB3aWR0aDogMjIwcHg7XG4gIH1cbiAgLmZpZWxkLWRlc2NyaXB0aW9uIHtcbiAgICBtYXJnaW46IDEwcHggNXB4O1xuICB9XG4gIGlucHV0LmZpZWxkLWp3dC1wcml2YXRlLWtleSB7XG4gICAgd2lkdGg6IDMwMHB4O1xuICB9XG4gIC5zdWJtaXQge1xuICAgIG1hcmdpbjogMCAwIDEuNXJlbTtcbiAgICBwYWRkaW5nOiAwO1xuICB9XG59XG4iXX0= */

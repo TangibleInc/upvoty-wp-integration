@@ -1,0 +1,20 @@
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:/tangibleinc/tangible-builder.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:/tangibleinc/tangible-plugin-framework.git"
+    }
+  ],
+  "require": {
+    "firebase/php-jwt": "dev-master",
+    "tangible/plugin-framework": "dev-master"
+  },
+  "require-dev": {
+    "tangible/builder": "dev-master"
+  },
+  "minimum-stability": "dev"
+}

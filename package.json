@@ -1,0 +1,13 @@
+{
+  "name": "upvoty-wp-integration",
+  "scripts": {
+    "preinstall": "cd vendor/tangible/builder && npm install",
+    "dev": "./vendor/tangible/builder/run dev",
+    "build": "./vendor/tangible/builder/run build",
+    "lint": "./vendor/tangible/builder/run lint --ignore=\"includes/login/index\\.php\"",
+    "beautify": "./vendor/tangible/builder/run beautify --ignore=\"includes/login/index\\.php\"",
+    "gitl": "./vendor/tangible/builder/run gitl"
+  },
+  "dependencies": {
+  }
+}

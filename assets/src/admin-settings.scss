@@ -1,0 +1,32 @@
+.inline {
+  display: inline;;
+}
+
+.upvoty-wp-integration-settings-tab-settings {
+  margin: 20px 0;
+
+  fieldset {
+    margin: 15px 0 25px;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.125em;
+    font-weight: 500;
+    cursor: default;
+  }
+  input[type=text],
+  input[type=password] {
+    width: 220px;
+  }
+  .field-description {
+    margin: 10px 5px;
+  }
+  input.field-jwt-private-key {
+    width: 300px;
+  }
+  .submit {
+    margin: 0 0 1.5rem;
+    padding: 0;
+  }
+}
