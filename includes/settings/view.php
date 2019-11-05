@@ -59,7 +59,7 @@ HTML
     </li>
     <li>
       <p>Add the following URL for <b>Dedicated Login</b> page:</p>
-      <pre><code><?= site_url() ?>/wp-login.php?interim-login=1&upvoty-widget=1</code></pre>
+      <pre><code><?= site_url() ?>/wp-login.php?interim-login=1&upvoty-widget=1&upvoty-redirect-url=<b>SITE_URL_TO_RETURN_TO</b></code></pre>
     </li>
     <li>
       <p>Generate a <b>private key</b> and enter it in the setting field above.</p>
