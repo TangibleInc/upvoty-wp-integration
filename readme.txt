@@ -18,10 +18,11 @@ Integrate Upvoty user feedback system with WordPress
 
 == Changelog ==
 
-= 0.0.4 =
+= 0.0.5 =
 
 Release Date: 2019-11-08
 
+- Improve passing query parameters through the login flow to SSO redirect
 - Improve widget embed logic, better error handling
 - Improve settings page documentation and styling; Hide entered JWT private key
 

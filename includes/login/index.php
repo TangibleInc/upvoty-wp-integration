@@ -43,23 +43,65 @@ add_action('login_init', function() use ( $upvoty ) {
   }
 
   /**
+   * Pass query args to various pages/redirects
+   */
+  $add_url_query_args = function($url) use ($upvoty) {
+    if (strpos($url, 'wp-login.php')===false) return $url;
+    $url = add_query_arg('interim-login', '1', $url);
+    $url = add_query_arg('upvoty-widget', '1', $url);
+    $url = add_query_arg('upvoty-redirect-url', $upvoty->widget_redirect_url, $url);
+    $url = add_query_arg( 'redirectUrl', $upvoty->widget_redirect_url, $url );
+    //$url = add_query_arg( 'redirect_to', $upvoty->widget_redirect_url, $url );
+    return $url;
+  };
+
+  // Add it to all URLs, since there are not enough hooks in wp-login.php to reliably pass query args
+  add_filter('site_url', $add_url_query_args, 0, 1);
+
+  $settings = $upvoty->get_extended_settings();
+
+  /**
    * Redirect back to Upvoty after login
    */
-  add_filter('login_redirect', function( $redirect_to, $requested_redirect_to, $user ) use ( $upvoty ) {
+  add_filter('login_redirect', function( $redirect_to, $requested_redirect_to, $user ) use ( $upvoty, $settings ) {
     if ( is_wp_error( $user ) ) {
       return $redirect_to;
     }
 
     $token = $upvoty->generate_user_token( $user );
-    $url   = $upvoty->sso_redirect_url . $token . '/';
+    $url   = $settings['sso_redirect_base_url'] . $token . '/';
     $url   = add_query_arg( 'redirectUrl', $upvoty->widget_redirect_url, $url );
+
+    // $url   = add_query_arg( 'redirect_to', $upvoty->widget_redirect_url, $url );
 
     wp_redirect( $url );
     exit;
-  }, 999, 3);
+  }, 0, 3);
 
   /**
-   * Display register link in the interim login form
+   * Login screen body and header
+   */
+
+  add_filter('login_body_class', function( $classes ) {
+    $classes [] = 'upvoty-wp-widget-body';
+    return $classes;
+  }, 10, 1);
+
+  if (!isset($_REQUEST['interim-login'])) return;
+
+  // Customizations below are necessary for interim login form
+
+  /**
+   * Remove "session expired" message that's added by default
+   */
+
+  add_filter('wp_login_errors', function($errors) {
+    $errors->remove('expired');
+    return $errors;
+  }, 999, 1);
+
+  /**
+   * Display register link in the login form
    *
    * Since there's no action/filter that does exactly what we need, use the closest filter
    * which requires an awkward workaround.
@@ -77,15 +119,6 @@ add_action('login_init', function() use ( $upvoty ) {
 
     return $enabled;
   }, 999, 1);
-
-  /**
-   * Login screen body and header
-   */
-
-  add_filter('login_body_class', function( $classes ) {
-    $classes [] = 'upvoty-wp-widget-body';
-    return $classes;
-  }, 10, 1);
 
   add_filter('login_headertitle', function( $title ) use ( $action ) {
     if ( $action === 'register' ) {
@@ -111,10 +144,23 @@ add_action('login_init', function() use ( $upvoty ) {
    * There's a script for interim login that forces target="_blank"
    * Remove them to keep user inside widget
    */
-  add_action('login_footer', function() {
-    ?><script><?php
-    include __DIR__ . 'script.js';
-    ?></script><?php
+  add_action('wp_print_footer_scripts', function() {
+
+    ?>
+<script>
+var loginUrl = '<?= $login_url ?>';
+
+var i, links = document.getElementsByTagName('a')
+
+for ( i in links ) {
+  if (typeof links[i]==='object' && links[i].href) {
+    links[i].target = ''
+  }
+}
+// Prevent going to site home via screen title
+document.querySelector('#login h1 a').href = 'javascript:void(0)'
+
+</script><?php
   });
 
-});
+}, 0);
