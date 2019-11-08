@@ -4,9 +4,10 @@ $upvoty->get_extended_settings = function() use ( $upvoty ) {
 
   $settings = $upvoty->plugin->get_settings();
 
-  $url_prefix      = ! empty( $settings['upvoty_user_url_prefix'] )
+  $url_prefix = ! empty( $settings['upvoty_user_url_prefix'] )
     ? $settings['upvoty_user_url_prefix']
     : 'user';
+
   $upvoty_base_url = "{$url_prefix}.upvoty.com";
 
   return array_merge($settings, [

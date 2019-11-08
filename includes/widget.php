@@ -4,9 +4,11 @@
 
 $upvoty->widget_loaded = false;
 
-$upvoty->widget = function ($atts = [], $return = false) use ($framework, $upvoty) {
+$upvoty->widget = function ( $atts = [], $return = false ) use ( $framework, $upvoty ) {
 
-  if ($upvoty->widget_loaded) return;
+  if ( $upvoty->widget_loaded ) {
+    return;
+  }
   $upvoty->widget_loaded = true;
 
   $settings = $upvoty->get_extended_settings();
@@ -28,7 +30,9 @@ $upvoty->widget = function ($atts = [], $return = false) use ($framework, $upvot
     }
   }
 
-  if ($return) ob_start();
+  if ( $return ) {
+    ob_start();
+  }
 
   ?>
 
@@ -54,12 +58,12 @@ $upvoty->widget = function ($atts = [], $return = false) use ($framework, $upvot
 </script>
   <?php
 
-  if ($return) {
+  if ( $return ) {
     return ob_get_clean();
   }
 };
 
 /** Upvoty widget - Provide global function for convenience */
-function upvoty_wp_widget($atts = [], $return = false) {
-  upvoty_wp()->widget($atts, $return);
+function upvoty_wp_widget( $atts = [], $return = false ) {
+  upvoty_wp()->widget( $atts, $return );
 }

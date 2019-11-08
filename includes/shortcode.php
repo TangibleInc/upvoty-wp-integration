@@ -8,5 +8,5 @@
  */
 
 add_shortcode('upvoty-wp', function( $atts = [] ) use ( $framework, $upvoty ) {
-  return $upvoty->widget($atts, true);
+  return $upvoty->widget( $atts, true );
 });
