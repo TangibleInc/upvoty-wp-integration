@@ -1,7 +1,13 @@
 <?php
 
 /** Upvoty widget */
+
+$upvoty->widget_loaded = false;
+
 $upvoty->widget = function ($atts = [], $return = false) use ($framework, $upvoty) {
+
+  if ($upvoty->widget_loaded) return;
+  $upvoty->widget_loaded = true;
 
   $settings = $upvoty->get_extended_settings();
 
@@ -32,6 +38,8 @@ $upvoty->widget = function ($atts = [], $return = false) use ($framework, $upvot
 <script type='text/javascript'>
 (function() {
 
+  if (window.upvotyLoaded != undefined) return
+
   var src = document.getElementById('upvoty-embed-script')
   var onError = function() {
     document.querySelector('[data-upvoty]').innerText = 'Upvoty widget could not be loaded.'
@@ -41,7 +49,7 @@ $upvoty->widget = function ($atts = [], $return = false) use ($framework, $upvot
   }
 
   upvoty.init('render', <?= wp_json_encode( $widget_data ) ?>)
-
+  window.upvotyLoaded = true
 })()
 </script>
   <?php
