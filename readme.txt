@@ -20,6 +20,12 @@ Integrate Upvoty user feedback system with WordPress
 
 = 0.0.1 =
 
+Release Date: 2019-11-08
+
+- Improve settings page styling; Hide entered JWT private key
+
+= 0.0.1 =
+
 Release Date: 2019-11-05
 
 - Initial release

@@ -14,25 +14,27 @@ $jwt_private_key_url =
 $remote_sso_settings_url_suffix = 'upvoty.com/customers/accountSettings/remote-sso/';
 
 ?>
-<fieldset>
-  <label for="">Upvoty User URL Prefix</label>
-  <input type="text"
-    name="<?= "{$settings_key}[upvoty_user_url_prefix]" ?>"
-    value="<?= $user_url_prefix ?>"
-    placeholder="username"
-    autocomplete="off"
-  />.upvoty.com
-</fieldset>
+<div class="row">
+  <fieldset class="col col-md-6">
+    <label for="">Upvoty User URL Prefix</label>
+    <input type="text"
+      name="<?= "{$settings_key}[upvoty_user_url_prefix]" ?>"
+      value="<?= $user_url_prefix ?>"
+      placeholder="username"
+      autocomplete="off"
+    />.upvoty.com
+  </fieldset>
 
-<fieldset>
-  <label for="">JWT Private Key</label>
-  <input type="text"
-    class="field-jwt-private-key"
-    name="<?= "{$settings_key}[jwt_private_key]" ?>"
-    value="<?= @$settings['jwt_private_key'] ?>"
-    autocomplete="off"
-  />
-</fieldset>
+  <fieldset class="col col-md-6">
+    <label for="">JWT Private Key</label>
+    <input type="text"
+      class="field-jwt-private-key font-dots"
+      name="<?= "{$settings_key}[jwt_private_key]" ?>"
+      value="<?= @$settings['jwt_private_key'] ?>"
+      autocomplete="off"
+    />
+  </fieldset>
+</div>
 <?php submit_button(); ?>
 <hr>
 

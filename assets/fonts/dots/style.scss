@@ -1,0 +1,17 @@
+
+@font-face {
+  font-family: 'dots';
+  // Relative to build folder where compiled CSS will be
+  src: url('../fonts/dots/dots.eot');
+  src: url('../fonts/dots/dots.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/dots/dots.woff') format('woff'),
+       url('../fonts/dots/dots.ttf') format('truetype'),
+       url('../fonts/dots/dots.svg#dotsfontregular') format('svg');
+}
+
+.font-dots {
+  font-family: 'dots';
+  color: #666;
+  line-height: 1rem;
+  font-size: 8px;
+}

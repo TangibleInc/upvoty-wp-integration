@@ -1,5 +1,29 @@
+@import "../fonts/dots/style";
+
 .inline {
   display: inline;;
+}
+
+.row {
+  display: table;
+  content: "";
+  width: 100%;
+}
+
+.row, .row:after {
+  clear: both
+}
+
+.col {
+  float: left;
+  min-height: 1px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .col-md-6 {
+    width: 50%;
+  }
 }
 
 .upvoty-wp-integration-settings-tab-settings {

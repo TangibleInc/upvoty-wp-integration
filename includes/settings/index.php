@@ -28,7 +28,7 @@ $upvoty->get_extended_settings = function() use ( $upvoty ) {
 
 $upvoty->plugin->register_settings(
   [
-    'css'  => $upvoty->plugin->url . '/assets/build/admin-settings.min.css',
+    'css'  => $upvoty->plugin->url . 'assets/build/admin-settings.min.css',
     'tabs' => [
       [
         'title'    => 'Settings',
