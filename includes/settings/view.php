@@ -42,25 +42,30 @@ $remote_sso_settings_url_suffix = 'upvoty.com/customers/accountSettings/remote-s
   <label for="">How to Use</label>
   <ol>
     <li>
-    <p>
-      Go to Upvoty customer settings for <b>Remote SSO</b>.
-    </p>
-    <p>
-    <?=
-    empty( $user_url_prefix ) ? "https://USER_PREFIX.{$remote_sso_settings_url_suffix}"
-      : <<<HTML
+      <p>Enable <b>single sign-on</b> for visitors to register/login through your site within the widget. (Optional)</p>
+      <ol>
+        <li>
+          <p>
+            Go to Upvoty customer settings for <b>Remote SSO</b>.
+          </p>
+          <p>
+          <?=
+          empty( $user_url_prefix ) ? "https://USER_PREFIX.{$remote_sso_settings_url_suffix}"
+            : <<<HTML
 
 <a href="https://{$user_url_prefix}.{$remote_sso_settings_url_suffix}" target="_blank">
   https://{$user_url_prefix}.{$remote_sso_settings_url_suffix}
 </a>
 
 HTML
-    ?>
-    </p>
-    </li>
-    <li>
-      <p>Add the following URL for <b>Dedicated Login</b> page:</p>
-      <pre><code><?= site_url() ?>/wp-login.php?interim-login=1&upvoty-widget=1&upvoty-redirect-url=<b>SITE_URL_TO_RETURN_TO</b></code></pre>
+          ?>
+          </p>
+        </li>
+        <li>
+          <p>Add the following URL for <b>Dedicated Login</b> page:</p>
+          <pre><code><?= site_url() ?>/wp-login.php?interim-login=1&upvoty-widget=1&upvoty-redirect-url=<b>SITE_URL_TO_RETURN_TO</b></code></pre>
+        </li>
+      </ol>
     </li>
     <li>
       <p>Generate a <b>private key</b> and enter it in the setting field above.</p>
