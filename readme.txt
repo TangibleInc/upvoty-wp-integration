@@ -18,12 +18,12 @@ Integrate Upvoty user feedback system with WordPress
 
 == Changelog ==
 
-= 0.0.3 =
+= 0.0.4 =
 
 Release Date: 2019-11-08
 
 - Improve widget embed logic, better error handling
-- Improve settings page styling; Hide entered JWT private key
+- Improve settings page documentation and styling; Hide entered JWT private key
 
 = 0.0.1 =
 
