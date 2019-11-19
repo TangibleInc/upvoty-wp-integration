@@ -14,7 +14,7 @@
  *
  * The Redirect URL should have the following format:
  *
- * https://USER_SITE_URL/wp-login.php?interim-login=1&upvoty-widget=1&upvoty-redirect-url=https://USER_SITE_URL/feedback
+ * https://USER_SITE_URL/wp-login.php?interim-login=1&upvoty-widget=1
  *
  * When a user is not logged in and tries to create a new feedback post, the widget will
  * redirect to the above URL, displaying this custom login screen.
@@ -30,7 +30,31 @@ add_action('login_init', function() use ( $upvoty ) {
     return;
   }
 
-  $upvoty->widget_redirect_url = @$_REQUEST['redirectUrl'];
+  /**
+   * Determine redirect URL
+   *
+   * 1. The widget redirects the user to the initial login page (here)
+   * 2. Login page gets the referer URL in HTTP_REFERER
+   *
+   *   This points back to the location inside the widget where the login flow started. It's in the format:
+   *
+   *   https://USER_PREFIX.upvoty.com/front/iframe/BOARD_NAME/
+   *
+   * 3. Login page sets query parameter `upvoty-widget-redirect-url` with that value
+   *
+   *   This passes the above URL to subsequent internal redirects for login.
+   *
+   * 4. Upon login form post and successful login, redirect back to that URL
+   */
+  $upvoty->widget_redirect_url =
+    // See #3
+    ! empty( $_REQUEST['upvoty-widget-redirect-url'] ) ? $_REQUEST['upvoty-widget-redirect-url']
+      // See #2
+      : ( ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER']
+        // See #1 - Fallback: the widget passes a URL to go back to Upvoty board page (standalone outside the site) -
+        : @$_REQUEST['redirectUrl']
+      )
+  ;
 
   if ( empty( $upvoty->widget_redirect_url ) ) {
     ?>Redirect URL is required<?php
@@ -44,8 +68,11 @@ add_action('login_init', function() use ( $upvoty ) {
     if (strpos($url, 'wp-login.php')===false) return $url;
     $url = add_query_arg('interim-login', '1', $url);
     $url = add_query_arg('upvoty-widget', '1', $url);
+
+    // See #3 above
+    $url = add_query_arg('upvoty-widget-redirect-url', $upvoty->widget_redirect_url, $url);
+
     $url = add_query_arg( 'redirectUrl', $upvoty->widget_redirect_url, $url );
-    //$url = add_query_arg( 'redirect_to', $upvoty->widget_redirect_url, $url );
     return $url;
   };
 
@@ -63,10 +90,10 @@ add_action('login_init', function() use ( $upvoty ) {
     }
 
     $token = $upvoty->generate_user_token( $user );
+
+    // See #4 above
     $url   = $settings['sso_redirect_base_url'] . $token . '/';
     $url   = add_query_arg( 'redirectUrl', $upvoty->widget_redirect_url, $url );
-
-    // $url   = add_query_arg( 'redirect_to', $upvoty->widget_redirect_url, $url );
 
     wp_redirect( $url );
     exit;
