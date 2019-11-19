@@ -124,8 +124,7 @@ add_action('login_init', function() use ( $upvoty ) {
   /**
    * Display register link in the login form
    *
-   * Since there's no action/filter that does exactly what we need, use the closest filter
-   * which requires an awkward workaround.
+   * Since there's no action/filter that does exactly what we need, using the closest filter
    */
   add_filter('enable_login_autofocus', function( $enabled ) {
 
@@ -133,10 +132,7 @@ add_action('login_init', function() use ( $upvoty ) {
       return $enabled;
     }
 
-    // We're *inside* a script tag in this filter
-    ?></script><?php
     include __DIR__ . '/register-link.php';
-    ?><script><?php
 
     return $enabled;
   }, 999, 1);
