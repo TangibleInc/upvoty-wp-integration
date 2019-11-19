@@ -3,14 +3,14 @@
  * Plugin Name: Upvoty WP Integration
  * Plugin URI: https://wordpress.org/tangibleinc/upvoty-wp-integration
  * Description: Integrate Upvoty user feedback system with WordPress
- * Version: 0.0.8
+ * Version: 0.0.9
  * Author: Team Tangible
  * Author URI: https://teamtangible.com
  * License: GPLv2 or later
  * Text Domain: upvoty-wp-textdomain
  */
 
-define( 'UPVOTY_WP_VERSION', '0.0.8' );
+define( 'UPVOTY_WP_VERSION', '0.0.9' );
 
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/vendor/tangible/plugin-framework/index.php';

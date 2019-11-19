@@ -2,11 +2,11 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:/tangibleinc/tangible-builder.git"
+      "url": "https://bitbucket.org/tangibleinc/tangible-builder.git"
     },
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:/tangibleinc/tangible-plugin-framework.git"
+      "url": "https://bitbucket.org/tangibleinc/tangible-plugin-framework.git"
     }
   ],
   "require": {
