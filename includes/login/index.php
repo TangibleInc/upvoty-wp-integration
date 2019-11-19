@@ -30,12 +30,7 @@ add_action('login_init', function() use ( $upvoty ) {
     return;
   }
 
-  $upvoty->widget_redirect_url =
-    ! empty( $_REQUEST['upvoty-redirect-url'] )
-      // From Upvoty SSO settings, and passed via login/register form redirect
-      ? $_REQUEST['upvoty-redirect-url']
-      // From Upvoty directly
-      : @$_REQUEST['redirectUrl'];
+  $upvoty->widget_redirect_url = @$_REQUEST['redirectUrl'];
 
   if ( empty( $upvoty->widget_redirect_url ) ) {
     ?>Redirect URL is required<?php
@@ -49,7 +44,6 @@ add_action('login_init', function() use ( $upvoty ) {
     if (strpos($url, 'wp-login.php')===false) return $url;
     $url = add_query_arg('interim-login', '1', $url);
     $url = add_query_arg('upvoty-widget', '1', $url);
-    $url = add_query_arg('upvoty-redirect-url', $upvoty->widget_redirect_url, $url);
     $url = add_query_arg( 'redirectUrl', $upvoty->widget_redirect_url, $url );
     //$url = add_query_arg( 'redirect_to', $upvoty->widget_redirect_url, $url );
     return $url;
