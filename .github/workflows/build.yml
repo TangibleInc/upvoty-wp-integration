@@ -17,7 +17,7 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --no-progress --no-suggest
       - name: Build zip package
-        run: cd .. && zip -r upvoty-wp-integration.zip upvoty-wp-integration -x "**/*.git*" "**/_*" "*pipelines.yml" "**/.gitignore" "**/composer.json" "**/composer.lock" "**/*.sass-cache*" "**/.babelrc" "**/.editorconfig" "**/package-lock.json" "**/test/**" "**/README.md" "**/readme.md" "**/vendor/tangible/builder*"
+        run: cd .. && zip -r upvoty-wp-integration.zip upvoty-wp-integration -x "**/*.git*" "**/_*" "*pipelines.yml" "**/.gitignore" "**/composer.json" "**/composer.lock" "**/*.sass-cache*" "**/.babelrc" "**/.editorconfig" "**/package-lock.json" "**/test/**" "**/README.md" "**/readme.md" "**/vendor/tangible/builder*" && ls
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
@@ -36,6 +36,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./upvoty-wp-integration.zip
+          asset_path: ../upvoty-wp-integration.zip
           asset_name: upvoty-wp-integration.zip
           asset_content_type: application/zip
