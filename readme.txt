@@ -15,10 +15,11 @@ Integrate Upvoty user feedback system with WordPress
 == Installation ==
 
 1. Install & activate in the admin: *Plugins -&gt; Add New -&gt; Upload Plugins*
+2. Go to *Settings -&gt; Upvoty WP*
 
 == Changelog ==
 
-= 0.1.1 =
+= 0.1.2 =
 
 Release Date: 2019-11-19
 

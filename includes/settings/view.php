@@ -35,12 +35,21 @@ $remote_sso_settings_url_suffix = 'upvoty.com/customers/accountSettings/remote-s
     />
   </fieldset>
 </div>
-<?php submit_button(); ?>
+<?php submit_button('Save Settings'); ?>
 <hr>
 
 <fieldset>
   <label for="">How to Use</label>
   <ol>
+    <?php
+      if (empty( $user_url_prefix )) {
+        ?>
+        <li>
+          <p>Enter your Upvoty user name in the above setting field, and save.</p>
+        </li>
+        <?php
+      }
+    ?>
     <li>
       <p>Enable <b>single sign-on</b> for visitors to register/login through your site within the widget.</p>
       <ol>
