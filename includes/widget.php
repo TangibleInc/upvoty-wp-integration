@@ -1,6 +1,11 @@
 <?php
 
-/** Upvoty widget */
+/**
+ * Upvoty widget
+ *
+ * Parameters:
+ * - board - Name of board
+ */
 
 $upvoty->widget_loaded = false;
 
