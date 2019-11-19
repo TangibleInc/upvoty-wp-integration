@@ -18,7 +18,7 @@ Integrate Upvoty user feedback system with WordPress
 
 == Changelog ==
 
-= 0.0.9 =
+= 0.1.0 =
 
 Release Date: 2019-11-19
 

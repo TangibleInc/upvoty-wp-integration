@@ -17,7 +17,7 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --no-progress --no-suggest
       - name: Build zip package
-        run: zip -r upvoty-wp-integration.zip upvoty-wp-integration -x "**/*.git*" "**/_*" "*pipelines.yml" "**/.gitignore" "**/composer.json" "**/composer.lock" "**/*.sass-cache*" "**/.babelrc" "**/.editorconfig" "**/package-lock.json" "**/test/**" "**/README.md" "**/readme.md" "**/vendor/tangible/builder*"
+        run: cd .. && zip -r upvoty-wp-integration.zip upvoty-wp-integration -x "**/*.git*" "**/_*" "*pipelines.yml" "**/.gitignore" "**/composer.json" "**/composer.lock" "**/*.sass-cache*" "**/.babelrc" "**/.editorconfig" "**/package-lock.json" "**/test/**" "**/README.md" "**/readme.md" "**/vendor/tangible/builder*"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
