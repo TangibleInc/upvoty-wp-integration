@@ -18,7 +18,7 @@ Integrate Upvoty user feedback system with WordPress
 
 == Changelog ==
 
-= 0.0.7 =
+= 0.0.8 =
 
 Release Date: 2019-11-19
 
@@ -26,6 +26,7 @@ Release Date: 2019-11-19
 - Support dynamic redirect URL after login success
 - Improve redirect logic to return back to inside the widget iframe; Add code comments to explain the logic
 - Improve adding register link at the bottom of interim login form
+- Added automated build script for GitHub Action
 
 = 0.0.5 =
 
