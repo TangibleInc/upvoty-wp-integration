@@ -1,15 +1,16 @@
 <?php
 
+$upvoty->widget_loaded = false;
+
 /**
  * Upvoty widget
  *
  * Parameters:
- * - board - Name of board
+ * - board_hash - Board hash
+ * - start_page - Available values: roadmap
  */
 
-$upvoty->widget_loaded = false;
-
-$upvoty->widget = function ( $atts = [], $return = false ) use ( $framework, $upvoty ) {
+$upvoty->widget = function ( $atts = [], $return = false ) use ( $upvoty ) {
 
   if ( $upvoty->widget_loaded ) {
     return;
@@ -19,10 +20,21 @@ $upvoty->widget = function ( $atts = [], $return = false ) use ( $framework, $up
   $settings = $upvoty->get_extended_settings();
 
   $widget_data = [
-  'ssoToken' => $upvoty->generate_user_token(),
-  'baseUrl'  => $settings['base_url'],
+    'ssoToken' => $upvoty->generate_user_token(),
+    'baseUrl'  => $settings['base_url'],
   ];
 
+  if ( isset($atts['board_hash']) ) {
+    $widget_data['boardHash'] = $atts['board_hash'];
+  }
+
+  if ( isset($atts['start_page']) ) {
+    $widget_data['startPage'] = $atts['start_page'];
+  }
+
+  /**
+   * Maybe in the future, support mapping board name to hash
+   *
   if ( ! empty( $atts['board'] ) ) {
 
     $board_name = $atts['board'];
@@ -34,6 +46,7 @@ $upvoty->widget = function ( $atts = [], $return = false ) use ( $framework, $up
       $widget_data['boardHash'] = $board_hash;
     }
   }
+  */
 
   if ( $return ) {
     ob_start();
@@ -70,5 +83,5 @@ $upvoty->widget = function ( $atts = [], $return = false ) use ( $framework, $up
 
 /** Upvoty widget - Provide global function for convenience */
 function upvoty_wp_widget( $atts = [], $return = false ) {
-  upvoty_wp()->widget( $atts, $return );
+  return upvoty_wp()->widget( $atts, $return );
 }

@@ -39,7 +39,7 @@ $remote_sso_settings_url_suffix = 'upvoty.com/customers/accountSettings/remote-s
 <hr>
 
 <fieldset>
-  <label for="">How to Use</label>
+  <label>How to Use</label>
   <ol>
     <?php
       if (empty( $user_url_prefix )) {
@@ -92,4 +92,22 @@ HTML
       <p>Use the shortcode <code>[upvoty-wp]</code> to display the widget.</p>
     </li>
   </ol>
+</fieldset>
+<hr>
+
+<label>Shortcode Parameters for <code>[upvoty-wp]</code></label>
+<fieldset>
+  <ul>
+    <li>
+      <p><code>board_hash</code> - Show board</p>
+      <p>Example: <code>[upvoty-wp board_hash="..."]</code></p>
+      <p>A board's hash can be found in its Widget section: https://<?=
+          empty( $user_url_prefix ) ? 'USER_PREFIX' : $user_url_prefix
+        ?>.upvoty.com/boards/widget/BOARD_NAME/
+      </p>
+    </li>
+    <li>
+      <p><code>start_page="roadmap"</code> - Show general or per-board roadmap</p>
+    </li>
+  </ul>
 </fieldset>

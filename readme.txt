@@ -19,6 +19,12 @@ Integrate Upvoty user feedback system with WordPress
 
 == Changelog ==
 
+= 0.1.3 =
+
+Release Date: 2019-11-20
+
+- Add board_hash and start_page parameters
+
 = 0.1.2 =
 
 Release Date: 2019-11-19

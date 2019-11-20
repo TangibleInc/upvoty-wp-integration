@@ -39,6 +39,13 @@
     font-weight: 500;
     cursor: default;
   }
+  ul {
+    list-style: disc;
+    padding-left: 18px;
+    li {
+      line-height: 1.5;
+    }
+  }
   input[type=text],
   input[type=password] {
     width: 220px;
