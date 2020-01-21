@@ -15,7 +15,10 @@ define( 'UPVOTY_WP_VERSION', '0.1.3' );
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/vendor/tangible/plugin-framework/index.php';
 
+use Tangible\Integrations\Elementor\Elementor as elementor;
+
 class UpvotyWP {
+
 
   use TangibleObject;
 
@@ -47,6 +50,14 @@ class UpvotyWP {
 
     /** Features have $framework and $upvoty in their scope */
     include __DIR__ . '/includes/index.php';
+
+    $elementor = new elementor;
+
+    add_action( 'plugins_loaded', function() use( $elementor, $upvoty ) {
+
+      // Pass data to the elementor instance
+      $elementor->init( $upvoty );
+    }, 7);
   }
 }
 
