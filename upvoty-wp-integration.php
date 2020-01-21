@@ -7,7 +7,7 @@
  * Author: Team Tangible
  * Author URI: https://teamtangible.com
  * License: GPLv2 or later
- * Text Domain: upvoty-wp-textdomain
+ * Text Domain: upvoty-wp
  */
 
 define( 'UPVOTY_WP_VERSION', '0.1.3' );
@@ -23,7 +23,15 @@ class UpvotyWP {
   public $state = [];
 
   function __construct() {
+
     add_action( tangible_plugin_framework()->ready, [ $this, 'register' ] );
+
+    /**
+     * Load plugin textdomain and localization files
+     */
+    add_action( 'init', function() {
+      load_plugin_textdomain( 'upvoty-wp' );
+    });
   }
 
   function register( $framework ) {

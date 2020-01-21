@@ -3,14 +3,12 @@
 /**
  * Third-party integrations
  *
- * Load conditionally when dependencies are met
+ * Each one should load conditionally when dependencies are met
  *
  * @local $framework, $upvoty
  */
 
-if ( did_action( 'elementor/loaded' ) ) {
-  require __DIR__ . '/elementor/index.php';
-}
+require __DIR__ . '/elementor/index.php';
 
 if ( class_exists('FLBuilder') ) {
   require __DIR__ . '/beaver/index.php';

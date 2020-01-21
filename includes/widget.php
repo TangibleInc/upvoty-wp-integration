@@ -19,6 +19,26 @@ $upvoty->widget = function ( $atts = [], $return = false ) use ( $upvoty ) {
 
   $settings = $upvoty->get_extended_settings();
 
+  if ( empty( $settings['jwt_private_key'] ) ) {
+
+    if ( $return ) ob_start();
+
+    if (current_user_can('administrator')) {
+
+      $settings_page_url = isset($upvoty->plugin->settings_page_url)
+        ? $upvoty->plugin->settings_page_url
+        : admin_url( 'options-general.php?page=upvoty-wp-integration-settings' )
+      ;
+
+      ?><p>Please make sure to complete <a href="<?=
+        $settings_page_url
+      ?>">Upvoty WP settings</a>.</p><?php
+    }
+
+    if ( $return ) return ob_get_clean();
+    return;
+  }
+
   $widget_data = [
     'ssoToken' => $upvoty->generate_user_token(),
     'baseUrl'  => $settings['base_url'],
@@ -53,25 +73,28 @@ $upvoty->widget = function ( $atts = [], $return = false ) use ( $upvoty ) {
   }
 
   ?>
-
 <div data-upvoty></div>
 
-<script id="upvoty-embed-script" type='text/javascript' src='<?= esc_attr( $settings['embed_js_url'] ) ?>'></script>
 <script type='text/javascript'>
 (function() {
 
-  if (window.upvotyLoaded != undefined) return
-
-  var src = document.getElementById('upvoty-embed-script')
+  var script = document.createElement('script')
   var onError = function() {
     document.querySelector('[data-upvoty]').innerText = 'Upvoty widget could not be loaded.'
   }
-  if (window.upvoty == undefined) {
-    return onError()
+  var onLoad = function() {
+    if (window.upvoty == undefined) return onError()
+    upvoty.init('render', <?= wp_json_encode( $widget_data ) ?>)
   }
 
-  upvoty.init('render', <?= wp_json_encode( $widget_data ) ?>)
-  window.upvotyLoaded = true
+  script.onerror = onError
+  script.onload = onLoad
+  script.onreadystatechange = onLoad
+  script.src = '<?= esc_attr( $settings['embed_js_url'] ) ?>'
+
+  document.body.appendChild(script)
+
+  if (window.upvoty) return onLoad()
 })()
 </script>
   <?php

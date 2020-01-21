@@ -4,17 +4,28 @@ $upvoty->get_extended_settings = function() use ( $upvoty ) {
 
   $settings = $upvoty->plugin->get_settings();
 
-  $url_prefix = ! empty( $settings['upvoty_user_url_prefix'] )
+  $url_prefix = !empty( $settings['upvoty_user_url_prefix'])
     ? $settings['upvoty_user_url_prefix']
-    : 'user';
+    : ''
+  ;
 
-  $upvoty_base_url = "{$url_prefix}.upvoty.com";
+  $upvoty_base_url = (!empty($url_prefix) ? $url_prefix : 'USER').'.upvoty.com';
+
+  $jwt_private_key = !empty($settings['jwt_private_key'])
+    ? $settings['jwt_private_key']
+    : ''
+  ;
 
   return array_merge($settings, [
     'base_url'              => $upvoty_base_url,
     'embed_js_url'          => "https://{$upvoty_base_url}/javascript/upvoty.embed.js",
     'sso_redirect_base_url' => "https://{$upvoty_base_url}/front/handleSSO/",
-    'jwt_private_key'       => @$settings['jwt_private_key'],
+    'jwt_private_key'       => $jwt_private_key,
+
+    /**
+     * Ensure all required fields
+     */
+    'is_complete'           => !empty($url_prefix) && !empty($jwt_private_key),
 
     /**
      * Allow user to associate board name to hash
