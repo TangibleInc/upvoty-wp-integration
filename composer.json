@@ -16,10 +16,5 @@
   "require-dev": {
     "tangible/builder": "dev-master"
   },
-  "minimum-stability": "dev",
-  "autoload": {
-    "psr-4": {
-      "Tangible\\Upvoty\\Integrations\\": "./includes/integrations"
-    }
-  }
+  "minimum-stability": "dev"
 }

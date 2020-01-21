@@ -7,9 +7,7 @@ namespace Tangible\Upvoty\Integrations\Elementor\Widgets;
 *
 * @see https://developers.elementor.com/creating-a-new-widget/
 */
-Class Upvoty extends \Elementor\Widget_Base
-{
-
+class Upvoty extends \Elementor\Widget_Base {
 
   /**
    * Widget slug
@@ -27,7 +25,7 @@ Class Upvoty extends \Elementor\Widget_Base
    * @return string
    */
   public function get_title() {
-    return __( 'Upvoty Integration', 'upvoty-wp-textdomain' );
+    return __( 'Upvoty Integration', 'upvoty-wp' );
   }
 
 
@@ -61,7 +59,7 @@ Class Upvoty extends \Elementor\Widget_Base
     $this->start_controls_section(
       'content_section',
       [
-        'label' => __( 'Content', 'upvoty-wp-textdomain' ),
+        'label' => __( 'Content', 'upvoty-wp' ),
         'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
       ]
     );
@@ -69,23 +67,23 @@ Class Upvoty extends \Elementor\Widget_Base
     $this->add_control(
       'specific_board',
       [
-        'label' => __( 'Show Specific Board', 'upvoty-wp-textdomain' ),
+        'label' => __( 'Show Specific Board', 'upvoty-wp' ),
         'type' => \Elementor\Controls_Manager::SWITCHER,
-        'label_on' => __( 'Yes', 'upvoty-wp-textdomain' ),
-        'label_off' => __( 'No', 'upvoty-wp-textdomain' ),
+        'label_on' => __( 'Yes', 'upvoty-wp' ),
+        'label_off' => __( 'No', 'upvoty-wp' ),
         'return_value' => 'yes',
         'default' => 'no',
-        'description' => __('Whether to show only specific Board.', 'upvoty-wp-textdomain'),
+        'description' => __('Whether to show only specific Board.', 'upvoty-wp'),
       ]
     );
 
     $this->add_control(
       'board_hash',
       [
-        'label' => __( 'Board Hash', 'upvoty-wp-textdomain' ),
+        'label' => __( 'Board Hash', 'upvoty-wp' ),
         'type' => \Elementor\Controls_Manager::TEXT,
         'label_block' => true,
-        'description' => __('Specific Board Hash - a Board\'s hash can be found in its Widget section: https://tangible.upvoty.com/boards/widget/BOARD_NAME/ ', 'upvoty-wp-textdomain'),
+        'description' => __('Specific Board Hash - a Board\'s hash can be found in its Widget section: https://tangible.upvoty.com/boards/widget/BOARD_NAME/ ', 'upvoty-wp'),
         'condition' => ['specific_board' => 'yes']
       ]
     );
@@ -93,15 +91,15 @@ Class Upvoty extends \Elementor\Widget_Base
     $this -> add_control(
       'start_page',
       [
-        'label' 	=> __( 'Start Page', 'upvoty-wp-textdomain' ),
+        'label' 	=> __( 'Start Page', 'upvoty-wp' ),
         'type' 		=> \Elementor\Controls_Manager::SELECT,
         'label_block' => true,
         'default'	=> 'no',
-        'description' => __('Whether to show Roadmap as a start page of the specific Board', 'upvoty-wp-textdomain'),
+        'description' => __('Whether to show Roadmap as a start page of the specific Board', 'upvoty-wp'),
         'options'	=>
           [
-            'roadmap'=> __( 'Roadmap Start Page', 'lifter-elements' ),
-            'no'		=> __( 'Default Board Page ', 'lifter-elements' )
+            'roadmap'=> __( 'Roadmap Start Page', 'upvoty-wp' ),
+            'no'		=> __( 'Default Board Page ', 'upvoty-wp' )
           ],
         'condition' => ['specific_board' => 'yes']
       ]
@@ -121,17 +119,15 @@ Class Upvoty extends \Elementor\Widget_Base
     $settings = $this->get_settings_for_display();
     $args=[];
 
-    if( $settings['specific_board'] ==='yes' ) {
-      if ( $settings[ 'board_hash' ] ) {
-        $args[ 'board_hash' ] = $settings[ 'board_hash' ];
-         if ( $settings[ 'start_page' ] !== 'no' ){
-           $args[ 'start_page' ] = $settings[ 'start_page' ];
-         }
+    if( $settings['specific_board'] ==='yes' && $settings[ 'board_hash' ] ) {
+      $args[ 'board_hash' ] = $settings[ 'board_hash' ];
+      if ( $settings[ 'start_page' ] !== 'no' ) {
+        $args[ 'start_page' ] = $settings[ 'start_page' ];
       }
     }
 
-    return upvoty_wp_widget( $args );
-    //return upvoty_wp_widget( ['start_page' =>'roadmap', 'board_hash' => '304657fa2cdbd0b4c674672bb256ece01e7d1725ddadee6038385faacf6b50c6'], true );
+    return upvoty_wp_widget( $args, true );
+    //return upvoty_wp_widget( ['start_page' =>'roadmap', 'board_hash' => ''], true );
   }
 
 
