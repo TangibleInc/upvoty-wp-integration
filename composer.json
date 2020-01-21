@@ -19,7 +19,7 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "Tangible\\Integrations\\": "./includes/integrations"
+      "Tangible\\Upvoty\\Integrations\\": "./includes/integrations"
     }
   }
 }
