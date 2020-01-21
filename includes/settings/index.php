@@ -41,11 +41,19 @@ $upvoty->get_extended_settings = function() use ( $upvoty ) {
 $upvoty->plugin->register_settings(
   [
     'css'  => $upvoty->plugin->url . 'assets/build/admin-settings.min.css',
+    'title_callback' => function( $plugin_config, $tabs, $active_tab ) use ($upvoty) {
+      ?>
+        <div class="upvoty-wp-logo">
+          <img src="<?= $upvoty->plugin->url . 'assets/images/upvoty-logo.png' ?>" alt="Upvoty Logo">
+        </div>
+        <?= $plugin_config['title'] ?>
+      <?php
+    },
     'tabs' => [
       [
         'title'    => 'Settings',
         'callback' => function( $plugin_config, $settings, $settings_key ) use ( $framework, $upvoty ) {
-          include __DIR__ . '/view.php';
+          require_once __DIR__ . '/view.php';
         },
       ],
     ],
