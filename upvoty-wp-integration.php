@@ -15,7 +15,7 @@ define( 'UPVOTY_WP_VERSION', '0.1.3' );
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/vendor/tangible/plugin-framework/index.php';
 
-use Tangible\Integrations\Elementor\Elementor as elementor;
+use Tangible\Upvoty\Integrations\Elementor\Elementor as elementor;
 
 class UpvotyWP {
 
