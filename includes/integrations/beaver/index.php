@@ -1,6 +1,12 @@
 <?php
 
+namespace Tangible\Upvoty\Integrations\Beaver;
+
 /**
- * Check dependencies
+ * Register integration and check dependencies
  */
-if ( ! class_exists('FLBuilder') ) return;
+if ( ! $upvoty->add_integration([
+  'name' => 'beaver',
+  'title' => 'Beaver Builder',
+  'active' => class_exists('FLBuilder'),
+])) return;

@@ -35,6 +35,39 @@
     margin-bottom: .25rem;
   }
 
+  .color-green {
+    color: #19a974;
+  }
+
+  .color-light-gray {
+    color: #999;
+  }
+
+  // Elements
+
+
+  fieldset {
+    margin: 15px 0 25px;
+    & > *:first-child {
+      margin-top: 0;
+    }
+  }
+
+  label {
+    display: block;
+    margin-bottom: .75rem;
+    font-size: 1.125em;
+    font-weight: 500;
+    cursor: default;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 18px;
+    li {
+      line-height: 1.5;
+    }
+  }
   // Logo
 
   .upvoty-wp-logo {
@@ -48,13 +81,15 @@
   }
 
   .getting-started {
+    margin-top: -.5rem;
     ol {
       margin-left: 1.25rem;
     }
   }
 
-  .shortcode-parameters {
+  .attributes-table {
 
+    margin-top: 1.25rem;
     text-align: left;
 
     th {
@@ -72,32 +107,16 @@
         margin-bottom: 0;
       }
     }
-    thead th:first-child {
+    td:first-child {
       width: 220px;
     }
   }
 }
 
 .upvoty-wp-integration-settings-tab-settings {
+
   margin: 20px 0;
 
-  fieldset {
-    margin: 15px 0 25px;
-  }
-  label {
-    display: block;
-    margin-bottom: .75rem;
-    font-size: 1.125em;
-    font-weight: 500;
-    cursor: default;
-  }
-  ul {
-    list-style: disc;
-    padding-left: 18px;
-    li {
-      line-height: 1.5;
-    }
-  }
   input[type=text],
   input[type=password] {
     width: 220px;

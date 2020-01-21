@@ -1,6 +1,12 @@
 <?php
 
+namespace Tangible\Upvoty\Integrations\Elementor;
+
 /**
- * Check dependencies
+ * Register integration and check dependencies
  */
-if ( ! function_exists('has_blocks') ) return;
+if ( ! $upvoty->add_integration([
+  'name' => 'gutenberg',
+  'title' => 'Gutenberg',
+  'active' => false // function_exists('has_blocks'),
+])) return;

@@ -38,8 +38,8 @@ $remote_sso_settings_url_suffix = 'upvoty.com/customers/accountSettings/remote-s
 <?php submit_button('Save Settings'); ?>
 <hr>
 
+<h2>Getting Started</h2>
 <fieldset class="getting-started">
-  <label>Getting Started</label>
   <ol>
     <?php
       if (empty( $user_url_prefix )) {
@@ -95,9 +95,9 @@ HTML
 </fieldset>
 <hr>
 
-<label>Shortcode Parameters</label>
+<h2>Shortcode Parameters</h2>
 
-<table class="shortcode-parameters">
+<table class="attributes-table">
   <thead>
     <th>Parameter</th>
     <th>Description</th>
@@ -121,5 +121,33 @@ HTML
       </td>
     </tr>
 
+  </tbody>
+</table>
+
+<?php
+
+$integrations = $upvoty->integrations;
+
+if (empty(array_keys($integrations))) return;
+
+?>
+<hr>
+<h2>Integrations</h2>
+
+<table class="attributes-table">
+  <tbody>
+    <?php
+      foreach ($integrations as $name => $config) {
+        ?>
+        <tr>
+          <td><b><?= $config['title'] ?></b></td>
+          <td><?= $config['active']
+            ? '<span class="color-green">Active</span>'
+            : '<span class="color-light-gray">Not active</span>'
+          ?></td>
+        </tr>
+        <?php
+      }
+    ?>
   </tbody>
 </table>

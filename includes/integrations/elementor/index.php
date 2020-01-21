@@ -3,12 +3,15 @@
 namespace Tangible\Upvoty\Integrations\Elementor;
 
 /**
- * Check dependencies
+ * Register integration and check dependencies
  */
-if ( ! defined( 'ELEMENTOR_VERSION' )
-  || ! version_compare( ELEMENTOR_VERSION, '2.0.0', '>=' )
-  || ! did_action( 'elementor/loaded' )
-) return;
+if ( ! $upvoty->add_integration([
+  'name' => 'elementor',
+  'title' => 'Elementor',
+  'active' => defined( 'ELEMENTOR_VERSION' )
+    && version_compare( ELEMENTOR_VERSION, '2.0.0', '>=' )
+    && did_action( 'elementor/loaded' ),
+])) return;
 
 /**
  * Add a custom categroy
