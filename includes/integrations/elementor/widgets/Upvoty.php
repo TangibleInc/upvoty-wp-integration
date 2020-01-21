@@ -1,6 +1,6 @@
 <?php
 
-namespace Tangible\Integrations\Elementor\Widgets;
+namespace Tangible\Upvoty\Integrations\Elementor\Widgets;
 /**
 *
 * Extends the default Elementor Button widget
