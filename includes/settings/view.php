@@ -38,8 +38,8 @@ $remote_sso_settings_url_suffix = 'upvoty.com/customers/accountSettings/remote-s
 <?php submit_button('Save Settings'); ?>
 <hr>
 
-<fieldset>
-  <label>How to Use</label>
+<fieldset class="getting-started">
+  <label>Getting Started</label>
   <ol>
     <?php
       if (empty( $user_url_prefix )) {
@@ -51,7 +51,7 @@ $remote_sso_settings_url_suffix = 'upvoty.com/customers/accountSettings/remote-s
       }
     ?>
     <li>
-      <p>Enable <b>single sign-on</b> for visitors to register/login through your site within the widget.</p>
+      <p>Enable <b>single sign-on</b> for site visitors.</p>
       <ol>
         <li>
           <p>
@@ -95,19 +95,31 @@ HTML
 </fieldset>
 <hr>
 
-<label>Shortcode Parameters for <code>[upvoty-wp]</code></label>
-<fieldset>
-  <ul>
-    <li>
-      <p><code>board_hash</code> - Show board</p>
-      <p>Example: <code>[upvoty-wp board_hash="..."]</code></p>
-      <p>A board's hash can be found in its Widget section: https://<?=
-          empty( $user_url_prefix ) ? 'USER_PREFIX' : $user_url_prefix
-        ?>.upvoty.com/boards/widget/BOARD_NAME/
-      </p>
-    </li>
-    <li>
-      <p><code>start_page="roadmap"</code> - Show general or per-board roadmap</p>
-    </li>
-  </ul>
-</fieldset>
+<label>Shortcode Parameters</label>
+
+<table class="shortcode-parameters">
+  <thead>
+    <th>Parameter</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>board_hash</code></td>
+      <td>
+        <p>By default, the widget shows an overview. Set this parameter to show a board.</p>
+        <p>Example: <code>[upvoty-wp board_hash="..."]</code></p>
+        <p>A board's hash can be found in its Widget section:</p>
+        <p>https://<?=
+            empty( $user_url_prefix ) ? 'USER_PREFIX' : $user_url_prefix
+          ?>.upvoty.com/boards/widget/BOARD_NAME/</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>start_page="roadmap"</code></td>
+      <td>
+        <p>Show general or per-board roadmap</p>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

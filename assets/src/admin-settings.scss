@@ -1,32 +1,42 @@
 @import "../fonts/dots/style";
 
-.inline {
-  display: inline;;
-}
-
-.row {
-  display: table;
-  content: "";
-  width: 100%;
-}
-
-.row, .row:after {
-  clear: both
-}
-
-.col {
-  float: left;
-  min-height: 1px;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .col-md-6 {
-    width: 50%;
-  }
-}
-
 .upvoty-wp-integration-settings {
+
+  // Utilities
+
+  .inline {
+    display: inline;;
+  }
+
+  .row {
+    display: table;
+    content: "";
+    width: 100%;
+  }
+
+  .row, .row:after {
+    clear: both
+  }
+
+  .col {
+    float: left;
+    min-height: 1px;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .col-md-6 {
+      width: 50%;
+    }
+  }
+
+  .my-1 {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+  }
+
+  // Logo
+
   .upvoty-wp-logo {
     display: inline-block;
     vertical-align: middle;
@@ -34,6 +44,36 @@
     img {
       max-width: 60px;
       border-radius: 50%;
+    }
+  }
+
+  .getting-started {
+    ol {
+      margin-left: 1.25rem;
+    }
+  }
+
+  .shortcode-parameters {
+
+    text-align: left;
+
+    th {
+      padding: .25rem 0 1rem 0;
+    }
+    td, td * {
+      vertical-align: top;
+    }
+    td {
+      padding-bottom: 1rem;
+      & p:first-child {
+        margin-top: 0;
+      }
+      & p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    thead th:first-child {
+      width: 220px;
     }
   }
 }
@@ -46,7 +86,7 @@
   }
   label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: .75rem;
     font-size: 1.125em;
     font-weight: 500;
     cursor: default;
