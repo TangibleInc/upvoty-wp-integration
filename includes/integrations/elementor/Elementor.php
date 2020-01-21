@@ -1,5 +1,5 @@
 <?php
-namespace Tangible\Integrations\Elementor;
+namespace Tangible\Upvoty\Integrations\Elementor;
 
 defined( 'ABSPATH' ) or die();
 
