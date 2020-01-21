@@ -144,23 +144,14 @@ Class Upvoty extends \Elementor\Widget_Base
 
     $content = $this->get_upvoty();
 
-    if( !ctype_space(strip_tags($content)) && !empty(strip_tags($content)) ) {
-    ?>
-      <div class="upvoty-content">
-        <?php
-          echo $content;
-        ?>
-      </div>
-    <?php
-
-    // Preview in the builder if no content
-    } else if( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-      ?>
-      <div class="upvoty-content">
-        <h2><?php echo __( 'This is preview content', 'upvoty-wp-textdomain') ?></h2>
-        <p><?php echo __( 'Upvoty content couldn\'t be loaded in editor mode', 'upvoty-wp-textdomain') ?></p>
-      </div>
-      <?php
+    if (empty($content) && \Elementor\Plugin::$instance->editor->is_edit_mode()) {
+      $content = '<p>Upvoty widget will be embedded on the frontend.</p>';
     }
+
+    ?>
+    <div class="upvoty-content">
+      <?= $content ?>
+    </div>
+    <?php
   }
 }

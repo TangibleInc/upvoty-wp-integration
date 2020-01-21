@@ -73,25 +73,28 @@ $upvoty->widget = function ( $atts = [], $return = false ) use ( $upvoty ) {
   }
 
   ?>
-
 <div data-upvoty></div>
 
-<script id="upvoty-embed-script" type='text/javascript' src='<?= esc_attr( $settings['embed_js_url'] ) ?>'></script>
 <script type='text/javascript'>
 (function() {
 
-  if (window.upvotyLoaded != undefined) return
-
-  var src = document.getElementById('upvoty-embed-script')
+  var script = document.createElement('script')
   var onError = function() {
     document.querySelector('[data-upvoty]').innerText = 'Upvoty widget could not be loaded.'
   }
-  if (window.upvoty == undefined) {
-    return onError()
+  var onLoad = function() {
+    if (window.upvoty == undefined) return onError()
+    upvoty.init('render', <?= wp_json_encode( $widget_data ) ?>)
   }
 
-  upvoty.init('render', <?= wp_json_encode( $widget_data ) ?>)
-  window.upvotyLoaded = true
+  script.onerror = onError
+  script.onload = onLoad
+  script.onreadystatechange = onLoad
+  script.src = '<?= esc_attr( $settings['embed_js_url'] ) ?>'
+
+  document.body.appendChild(script)
+
+  if (window.upvoty) return onLoad()
 })()
 </script>
   <?php
