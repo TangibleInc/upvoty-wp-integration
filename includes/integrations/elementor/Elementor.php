@@ -87,13 +87,7 @@ final class Elementor {
     if ( $plugin )  $this -> plugin = $plugin;
 
     // Check if Elementor installed and activated
-    if ( !did_action( 'elementor/loaded' ) ) {
-
-      //We don\'t need this notice since plugin Upvoty WP Integration actually works as standalone too - just return ?
-      //add_action( 'admin_notices', [ $this, 'admin_notice_missing_main_plugin' ] );
-
-      return;
-    }
+    if ( !did_action( 'elementor/loaded' ) ) return;
 
     // Check for required Elementor version
     if ( !version_compare( ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=' ) ) {
@@ -111,9 +105,6 @@ final class Elementor {
 
     // Add Plugin actions
     add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
-
-    // Do we need dynamic tag for Upvoty ?
-    //add_action( 'elementor/dynamic_tags/register_tags', [ $this, 'init_tags' ] );
 
   }
 
