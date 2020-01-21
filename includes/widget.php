@@ -19,6 +19,26 @@ $upvoty->widget = function ( $atts = [], $return = false ) use ( $upvoty ) {
 
   $settings = $upvoty->get_extended_settings();
 
+  if ( empty( $settings['jwt_private_key'] ) ) {
+
+    if ( $return ) ob_start();
+
+    if (current_user_can('administrator')) {
+
+      $settings_page_url = isset($upvoty->plugin->settings_page_url)
+        ? $upvoty->plugin->settings_page_url
+        : admin_url( 'options-general.php?page=upvoty-wp-integration-settings' )
+      ;
+
+      ?><p>Please make sure to complete <a href="<?=
+        $settings_page_url
+      ?>">Upvoty WP settings</a>.</p><?php
+    }
+
+    if ( $return ) return ob_get_clean();
+    return;
+  }
+
   $widget_data = [
     'ssoToken' => $upvoty->generate_user_token(),
     'baseUrl'  => $settings['base_url'],
