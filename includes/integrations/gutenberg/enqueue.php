@@ -15,7 +15,11 @@ add_action('enqueue_block_editor_assets', function() use ($upvoty) {
   wp_enqueue_script(
     'tangible-upvoty-gutenberg-blocks-js',
     $url . 'assets/build/gutenberg-blocks.min.js',
-    ['wp-block-editor', 'wp-blocks', 'wp-element', 'wp-i18n', 'wp-polyfill', 'wp-server-side-render'],
+    // Dependencies
+    [
+      'tangible-upvoty-frontend-js',
+      'wp-block-editor', 'wp-blocks', 'wp-element', 'wp-i18n', 'wp-polyfill', 'wp-server-side-render'
+    ],
     $version
   );
 });
