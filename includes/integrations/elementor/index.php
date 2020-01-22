@@ -8,6 +8,7 @@ namespace Tangible\Upvoty\Integrations\Elementor;
 if ( ! $upvoty->add_integration([
   'name' => 'elementor',
   'title' => 'Elementor',
+  'description' => 'In widget category "Upvoty Integration"',
   'active' => defined( 'ELEMENTOR_VERSION' )
     && version_compare( ELEMENTOR_VERSION, '2.0.0', '>=' )
     && did_action( 'elementor/loaded' ),

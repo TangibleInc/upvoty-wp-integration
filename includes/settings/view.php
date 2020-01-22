@@ -134,7 +134,7 @@ if (empty(array_keys($integrations))) return;
 <hr>
 <h2>Integrations</h2>
 
-<table class="attributes-table">
+<table class="attributes-table section-integrations">
   <tbody>
     <?php
       foreach ($integrations as $name => $config) {
@@ -145,6 +145,12 @@ if (empty(array_keys($integrations))) return;
             ? '<span class="color-green">Active</span>'
             : '<span class="color-light-gray">Not active</span>'
           ?></td>
+          <td>
+            <?= !empty($config['description'])
+              ? '<p>' . $config['description'] . '</p>'
+              : ''
+            ?>
+          </td>
         </tr>
         <?php
       }

@@ -8,6 +8,7 @@ namespace Tangible\Upvoty\Integrations\Elementor;
 if ( ! $upvoty->add_integration([
   'name' => 'gutenberg',
   'title' => 'Gutenberg',
+  'description' => 'In block category "Embed"',
   'active' => function_exists('has_blocks'),
 ])) return;
 

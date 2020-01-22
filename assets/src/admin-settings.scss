@@ -71,9 +71,11 @@
   // Logo
 
   .upvoty-wp-logo {
+
     display: inline-block;
     vertical-align: middle;
     margin-right: 4px;
+
     img {
       max-width: 60px;
       border-radius: 50%;
@@ -107,8 +109,15 @@
         margin-bottom: 0;
       }
     }
+
     td:first-child {
       width: 220px;
+    }
+  }
+
+  .section-integrations {
+    td:nth-child(2) {
+      width: 120px;
     }
   }
 }
