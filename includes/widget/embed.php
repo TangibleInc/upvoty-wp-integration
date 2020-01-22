@@ -2,26 +2,21 @@
 
 $upvoty->embed_widget = function ( $atts = [], $immediate = true) use ( $upvoty ) {
 
-  // Destructure data to variables
-  foreach ($upvoty->get_embed_widget_data() as $key => $value) {
-    $$key = $value;
-  }
-
   // Frontend
   if ($immediate) {
-    return $upvoty->embed_widget_init_script($widget_data, $embed_js_url);
+    return $upvoty->embed_widget_init_script( $atts );
   }
 
   // Admin or page builder
 
   $action = (is_admin() ? 'admin_' : 'wp_') . 'print_footer_scripts';
 
-  add_action($action, function() use ($upvoty, $widget_data, $embed_js_url) {
-    $upvoty->embed_widget_init_script($widget_data, $embed_js_url);
+  add_action($action, function() use ( $upvoty, $atts ) {
+    $upvoty->embed_widget_init_script( $atts );
   });
 };
 
-$upvoty->get_embed_widget_data = function() use ($upvoty) {
+$upvoty->get_embed_widget_data = function( $atts = [] ) use ($upvoty) {
 
   $settings = $upvoty->get_extended_settings();
 
@@ -46,15 +41,22 @@ $upvoty->get_embed_widget_data = function() use ($upvoty) {
   ];
 };
 
-$upvoty->embed_widget_init_script = function($widget_data, $embed_js_url) use ($upvoty) {
+$upvoty->get_embed_widget_data_json = function( $attr = [] ) use ($upvoty) {
+
+  $data = $upvoty->get_embed_widget_data( $attr );
+
+  return wp_json_encode([
+    'widgetData' => $data['widget_data'],
+    'embedJsUrl' => $data['embed_js_url'],
+  ]);
+};
+
+$upvoty->embed_widget_init_script = function( $atts = [] ) use ($upvoty) {
 
   ?>
 <script>
 if (UpvotyWp && UpvotyWp.create) {
-  UpvotyWp.create({
-    widgetData: <?= wp_json_encode( $widget_data ) ?>,
-    embedJsUrl: '<?= $embed_js_url ?>'
-  })
+  UpvotyWp.create(<?= $upvoty->get_embed_widget_data_json( $atts ) ?>)
 }
 </script>
   <?php

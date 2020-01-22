@@ -33,16 +33,7 @@ $upvoty->widget = function ( $atts = [], $immediate = true ) use ( $upvoty ) {
   } else {
 
     // If dynamic, pass widget data so it can be instantiated
-
-    $data = $upvoty->get_embed_widget_data();
-
-    $data_attr = $immediate
-      ? ''
-      : wp_json_encode([
-        'widgetData' => $data['widget_data'],
-        'embedJsUrl' => $data['embed_js_url'],
-      ])
-    ;
+    $data_attr = $immediate ? '' : $upvoty->get_embed_widget_data_json($atts);
 
     ?><div data-upvoty="<?= esc_attr($data_attr) ?>"></div><?php
 
