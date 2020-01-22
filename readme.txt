@@ -10,7 +10,9 @@ Integrate Upvoty user feedback system with WordPress
 
 == Description ==
 
-**Upvoty WP Integration** provides a simple way to embed Upvoty widgets in your site.
+**Upvoty WP Integration** provides ways to embed the Upvoty feedback system in your site, with single sign-on for visitors.
+
+It includes a shortcode, Gutenberg block, and Elementor widget (optional).
 
 == Installation ==
 
