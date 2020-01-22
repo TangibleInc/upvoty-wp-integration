@@ -126,8 +126,7 @@ class Upvoty extends \Elementor\Widget_Base {
       }
     }
 
-    return upvoty_wp_widget( $args, true );
-    //return upvoty_wp_widget( ['start_page' =>'roadmap', 'board_hash' => ''], true );
+    return upvoty_wp_widget( $args );
   }
 
 
