@@ -1,6 +1,6 @@
 (function() {
 
-  const warn = (message, ...args) => console.log(`Upvoty WP widget: ${message}`, ...args)
+  const warn = (message, ...args) => console.warn(`Upvoty WP widget: ${message}`, ...args)
 
   function createUpvotyWidget(props = {}) {
 
@@ -17,7 +17,7 @@
       if (config && typeof config==='object') {
         Object.assign(props, config)
       } else {
-        warn(' Invalid config', config)
+        warn('Invalid config', config)
         return
       }
     }
@@ -28,7 +28,7 @@
     } = props
 
     if (!embedJsUrl) {
-      warn('Upvoty WP widget: Empty embed JS URL')
+      warn('Empty embed JS URL')
       return
     }
 
@@ -58,11 +58,6 @@
     script.src = embedJsUrl
 
     document.body.appendChild(script)
-
-    // Fallback if all else fails
-    setTimeout(function() {
-      if (!loaded) onError()
-    }, 3000)
   }
 
   // Support dynamic initialization
