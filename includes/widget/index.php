@@ -16,7 +16,7 @@ $upvoty->widget = function ( $atts = [], $immediate = true ) use ( $upvoty ) {
 
   ob_start();
 
-  if ( empty( $settings['jwt_private_key'] ) ) {
+  if ( ! $settings['is_complete'] ) {
 
     if (current_user_can('administrator')) {
 
