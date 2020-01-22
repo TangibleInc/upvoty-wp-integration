@@ -19,11 +19,12 @@ Integrate Upvoty user feedback system with WordPress
 
 == Changelog ==
 
-= 0.1.4 =
+= 0.1.5 =
 
-Release Date: 2020-01-21
+Release Date: 2020-01-22
 
 - Add Elementor integration
+- Add Gutenberg integration
 
 = 0.1.3 =
 
