@@ -1,6 +1,6 @@
 <?php
 
-namespace Tangible\Upvoty\Integrations\Elementor;
+namespace Tangible\Upvoty\Integrations\Gutenberg;
 
 /**
  * Register integration and check dependencies

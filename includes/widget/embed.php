@@ -41,9 +41,9 @@ $upvoty->get_embed_widget_data = function( $atts = [] ) use ($upvoty) {
   ];
 };
 
-$upvoty->get_embed_widget_data_json = function( $attr = [] ) use ($upvoty) {
+$upvoty->get_embed_widget_data_json = function( $atts = [] ) use ($upvoty) {
 
-  $data = $upvoty->get_embed_widget_data( $attr );
+  $data = $upvoty->get_embed_widget_data( $atts );
 
   return wp_json_encode([
     'widgetData' => $data['widget_data'],
