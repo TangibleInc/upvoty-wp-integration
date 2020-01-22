@@ -1,11 +1,11 @@
 {
   "name": "upvoty-wp-integration",
   "scripts": {
-    "dev": "./vendor/tangible/builder/run dev",
-    "build": "./vendor/tangible/builder/run build",
-    "lint": "./vendor/tangible/builder/run lint --ignore=\"includes/login/index\\.php\"",
-    "beautify": "./vendor/tangible/builder/run beautify --ignore=\"includes/login/index\\.php\"",
-    "gitl": "./vendor/tangible/builder/run gitl"
+    "dev": "tgb dev",
+    "build": "tgb build",
+    "lint": "tgb lint --ignore=\"includes/login/index\\.php\"",
+    "beautify": "tgb beautify --ignore=\"includes/login/index\\.php\"",
+    "gitl": "tgb gitl"
   },
   "dependencies": {},
   "devDependencies": {
