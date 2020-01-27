@@ -3,7 +3,7 @@
  *
  * variables:
  *
- * $module   An instance of your module class.
+ * $module   An instance of module class.
  * $settings The module's settings.
  *
  */
