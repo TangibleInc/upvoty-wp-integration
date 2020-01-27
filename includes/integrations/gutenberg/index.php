@@ -7,8 +7,8 @@ namespace Tangible\Upvoty\Integrations\Gutenberg;
  */
 if ( ! $upvoty->add_integration([
   'name' => 'gutenberg',
-  'title' => 'Gutenberg',
-  'description' => 'In block category "Embed"',
+  'title' => __( 'Gutenberg', 'upvoty-wp' ),
+  'description' => __( 'In block category "Embed"', 'upvoty-wp' ),
   'active' => function_exists('has_blocks'),
 ])) return;
 
