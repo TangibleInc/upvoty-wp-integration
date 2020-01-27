@@ -3,8 +3,8 @@
  *
  * variables:
  *
- * $module   An instance of module class.
- * $settings The module's settings.
+ * $module   object - An instance of module class.
+ * $settings object - The module's settings.
  *
  */
 ?>
