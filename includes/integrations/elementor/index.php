@@ -7,8 +7,8 @@ namespace Tangible\Upvoty\Integrations\Elementor;
  */
 if ( ! $upvoty->add_integration([
   'name' => 'elementor',
-  'title' => 'Elementor',
-  'description' => 'In widget category "Upvoty Integration"',
+  'title' => __( 'Elementor', 'upvoty-wp' ),
+  'description' => __( 'In widget category "Upvoty Integration"', 'upvoty-wp' ),
   'active' => defined( 'ELEMENTOR_VERSION' )
     && version_compare( ELEMENTOR_VERSION, '2.0.0', '>=' )
     && did_action( 'elementor/loaded' ),
@@ -24,7 +24,7 @@ add_action( 'elementor/elements/categories_registered', function( $elements_mana
   $elements_manager->add_category(
     'upvoty-integration',
     [
-      'title' => __( 'Upvoty Integration', 'upvoty-wp-textdomain' ),
+      'title' => __( 'Upvoty Integration', 'upvoty-wp' ),
       'icon' => 'fa fa-plug',
     ]
   );
