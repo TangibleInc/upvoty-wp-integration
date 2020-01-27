@@ -15,9 +15,9 @@ class Upvoty extends \FLBuilderModule {
 
     parent::__construct(
       [
-        'name'          => __('Upvoty Module', 'upvoty-wp'),
+        'name'          => __('Upvoty Integration', 'upvoty-wp'),
         'description'   => __('Render Upvoty Boards.', 'upvoty-wp'),
-        'category'		  => __('Upvoty Modules', 'upvoty-wp'),
+        'category'		  => __('Upvoty Integration Modules', 'upvoty-wp'),
         'dir'           => upvoty_wp()->plugin -> config['dir_path'] . 'includes/integrations/beaver/modules/upvoty/',
         'url'           => upvoty_wp()->plugin -> config['url'] . 'includes/integrations/beaver/modules/upvoty/',
       ]
