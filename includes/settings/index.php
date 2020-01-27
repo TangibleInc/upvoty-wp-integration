@@ -1,5 +1,9 @@
 <?php
 
+$upvoty->has_complete_settings = function() use ( $upvoty ) {
+  return $upvoty->get_extended_settings()['is_complete'];
+};
+
 $upvoty->get_extended_settings = function() use ( $upvoty ) {
 
   $settings = $upvoty->plugin->get_settings();
