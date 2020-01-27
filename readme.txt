@@ -21,6 +21,13 @@ It includes a shortcode, Gutenberg block, and Elementor widget (optional).
 
 == Changelog ==
 
+= 0.1.6 =
+
+Release Date: 2020-01-27
+
+- Add welcome message
+- Add Beaver Builder integration
+
 = 0.1.5 =
 
 Release Date: 2020-01-22
