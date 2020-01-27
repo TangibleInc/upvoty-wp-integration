@@ -7,8 +7,8 @@ namespace Tangible\Upvoty\Integrations\Beaver;
  */
 if ( ! $upvoty->add_integration([
   'name' => 'beaver',
-  'title' => 'Beaver Builder',
-  'description' => 'In module \'Upvoty Module\'',
+  'title' => __( 'Beaver Builder', 'upvoty-wp' ),
+  'description' => __( 'In module "Upvoty Module"', 'upvoty-wp' ),
   'active' => class_exists('FLBuilder'),
 ])) return;
 
