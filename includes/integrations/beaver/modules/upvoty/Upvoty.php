@@ -18,8 +18,8 @@ class Upvoty extends \FLBuilderModule {
         'name'          => __('Upvoty Integration', 'upvoty-wp'),
         'description'   => __('Render Upvoty Boards.', 'upvoty-wp'),
         'category'		  => __('Upvoty Integration Modules', 'upvoty-wp'),
-        'dir'           => upvoty_wp()->plugin -> config['dir_path'] . 'includes/integrations/beaver/modules/upvoty/',
-        'url'           => upvoty_wp()->plugin -> config['url'] . 'includes/integrations/beaver/modules/upvoty/',
+        'dir'           => upvoty_wp() -> plugin -> config['dir_path'] . 'includes/integrations/beaver/modules/upvoty/',
+        'url'           => upvoty_wp() -> plugin -> config['url'] . 'includes/integrations/beaver/modules/upvoty/',
       ]
     );
   }
@@ -52,7 +52,7 @@ class Upvoty extends \FLBuilderModule {
 /**
  * Register the module and its settings.
  */
-\FLBuilder::register_module('Tangible\\Upvoty\\Integrations\\Beaver\\Modules\\Upvoty\\Upvoty',
+\FLBuilder::register_module( 'Tangible\\Upvoty\\Integrations\\Beaver\\Modules\\Upvoty\\Upvoty',
 [
   'upvoty' =>
     [ // Tab
