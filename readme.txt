@@ -1,23 +1,25 @@
 === Upvoty WP Integration ===
 Requires at least: 4.0
-Tested up to: 5.2.4
+Tested up to: 5.3.2
 Requires PHP: 7
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags:
+Tags: upvoty
 
 Integrate Upvoty user feedback system with WordPress
 
 == Description ==
 
-**Upvoty WP Integration** provides ways to embed the Upvoty feedback system in your site, with single sign-on for visitors.
+**Upvoty WP Integration** embeds the Upvoty feedback system in your site, with single sign-on for visitors.
 
-It includes a shortcode, Gutenberg block, and Elementor widget (optional).
+It includes a shortcode, Gutenberg block, and optional integration with Beaver Builder and Elementor.
+
 
 == Installation ==
 
 1. Install & activate in the admin: *Plugins -&gt; Add New -&gt; Upload Plugins*
 2. Go to *Settings -&gt; Upvoty WP*
+
 
 == Changelog ==
 

@@ -44,7 +44,7 @@ class Upvoty extends \FLBuilderModule {
       }
     }
 
-    return upvoty_wp_widget( $args, true );
+    return upvoty_wp_widget( $args );
   }
 }
 
