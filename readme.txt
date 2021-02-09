@@ -23,6 +23,12 @@ It includes a shortcode, Gutenberg block, and optional integration with Beaver B
 
 == Changelog ==
 
+= 0.1.7 =
+
+Release Date: 2021-02-09
+
+- Version bump to recompile with latest dependencies
+
 = 0.1.6 =
 
 Release Date: 2020-01-27
