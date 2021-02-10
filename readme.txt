@@ -25,9 +25,10 @@ It includes a shortcode, Gutenberg block, and optional integration with Beaver B
 
 = 0.1.7 =
 
-Release Date: 2021-02-09
+Release Date: 2021-02-10
 
-- Version bump to recompile with latest dependencies
+- Update dependencies
+- Update plugin framework loading sequence
 
 = 0.1.6 =
 
