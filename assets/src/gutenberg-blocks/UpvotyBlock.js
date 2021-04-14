@@ -39,8 +39,6 @@ class UpvotyBlock extends Component {
 
     const { UpvotyWp } = window
 
-    console.log('UpvotyWp1111 - ',UpvotyWp)
-
     if (!UpvotyWp || !UpvotyWp.create) return
 
     /**
