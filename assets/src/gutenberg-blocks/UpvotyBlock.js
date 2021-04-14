@@ -1,5 +1,8 @@
 
-const { wp } = window
+const {
+  wp,
+  UGBLocalized
+} = window
 
 const {
   blockEditor: {
@@ -54,7 +57,7 @@ class UpvotyBlock extends Component {
 
     const check = () => {
 
-      const $widget = this.el.querySelector('[data-upvoty]')
+      const $widget = this.el && this.el.querySelector('[data-upvoty]')
       if (!$widget) return
 
       UpvotyWp.create({
@@ -76,44 +79,38 @@ class UpvotyBlock extends Component {
 
   recreateWidget = () => {
 
-    const recreate = () => {
-    const $widget = document.querySelector('[data-upvoty]')
+    const $widget = this.el && this.el.querySelector('[data-upvoty]')
     if ($widget) $widget.remove()
-      this.createWidget()
-    }
 
-    recreate()
+    this.createWidget()
   }
 
-  onChangeSpecificBoard = ( specific_board ) => {
+  onChangeSpecificBoard = ( value ) => {
 
-    if(specific_board.val){
-      this.props.setAttributes( { specific_board: 'yes' } )
-    } else{
-      this.props.setAttributes( { specific_board: '' } )
-      this.props.setAttributes( { board_hash: '' } )
-      this.props.setAttributes( {  start_page: '' } )
+    if ( value ) {
+      this.props.setAttributes({ specific_board: 'yes' })
+    } else {
+      this.props.setAttributes({
+        specific_board: '',
+        board_hash: '',
+        start_page: ''
+      })
     }
 
     this.recreateWidget()
-   }
-
-  onChangeBoardHash = ( board_hash ) => {
-
-     if(this.props.attributes.specific_board) {
-       this.props.setAttributes( { board_hash: board_hash.val } )
-     }
-
-     this.recreateWidget()
   }
 
-  onChangeStartPage = ( start_page ) => {
+  onChangeBoardAttribute = ( name, value ) => {
 
-    if(this.props.attributes.specific_board) {
-      this.props.setAttributes({start_page: start_page.val})
-    }
+    // board_hash, start_page needs specific board
 
-     this.recreateWidget()
+    if ( ! this.props.attributes.specific_board ) return
+
+    this.props.setAttributes({
+      [name]: value
+    })
+
+    this.recreateWidget()
   }
 
   render() {
@@ -127,7 +124,7 @@ class UpvotyBlock extends Component {
       specific_board,
       board_hash,
       start_page
-    } = attributes;
+    } = attributes
 
     return (
       <div ref={el => this.el = el}>
@@ -145,35 +142,35 @@ class UpvotyBlock extends Component {
           >
             <PanelRow>
               <ToggleControl
-                label={UGBLocalized.specific_board_label}
-                help={UGBLocalized.specific_board_help}
+                label={ UGBLocalized.specific_board_label }
+                help={ UGBLocalized.specific_board_help }
                 checked={specific_board}
-                onChange={( val ) => this.onChangeSpecificBoard({ val })}
+                onChange={( val ) => this.onChangeSpecificBoard(val)}
               />
             </PanelRow>
-            <PanelRow>
-              <TextControl
-                label={UGBLocalized.board_hash_label}
-                help={UGBLocalized.board_hash_help}
-                value={ board_hash }
-                onChange={ ( val ) => this.onChangeBoardHash( { val } ) }
-              />
-            </PanelRow>
-            <PanelRow>
-              <SelectControl
-                label={UGBLocalized.start_page_label}
-                help={UGBLocalized.start_page_help}
-                options = {[
-                      { label: 'Roadmap Start Page', value: 'roadmap' },
-                      { label: 'Default Board Page', value: '' },
             <div style={{
               visibility: specific_board ? 'visible' : 'hidden'
             }}>
+              <PanelRow>
+                <TextControl
+                  label={ UGBLocalized.board_hash_label }
+                  help={ UGBLocalized.board_hash_help }
+                  onChange={ ( val ) => this.onChangeBoardAttribute('board_hash', val) }
+                  value={ board_hash }
+                />
+              </PanelRow>
+              <PanelRow>
+                <SelectControl
+                  label={ UGBLocalized.start_page_label }
+                  help={ UGBLocalized.start_page_help }
+                  options = {[
+                    { label: 'Roadmap Start Page', value: 'roadmap' },
+                    { label: 'Default Board Page', value: '' },
                   ]}
-                onChange={ ( val ) => this.onChangeStartPage( { val } ) }
-                value={ start_page }
-              />
-            </PanelRow>
+                  onChange={ ( val ) => this.onChangeBoardAttribute('start_page', val) }
+                  value={ start_page }
+                />
+              </PanelRow>
             </div>
           </PanelBody>
         </InspectorControls> }
