@@ -1,0 +1,8 @@
+
+/* make gutenberg Upvoty block clickable  */
+.wp-block-tangible-upvoty{
+  pointer-events: none;
+
+  // temp
+  min-height: 100px;
+}

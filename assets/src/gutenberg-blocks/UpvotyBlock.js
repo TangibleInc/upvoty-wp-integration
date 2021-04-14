@@ -1,3 +1,4 @@
+
 const { wp } = window
 
 const {
@@ -5,7 +6,15 @@ const {
     InspectorControls
   },
   components: {
-    Panel, PanelBody, PanelRow
+    Panel,
+    PanelBody,
+    PanelRow,
+    TextControl,
+    CheckboxControl,
+    RadioControl,
+    SelectControl,
+    FormToggle,
+    ToggleControl
   },
   element: {
     Component
@@ -26,9 +35,23 @@ class UpvotyBlock extends Component {
     if (this.unsubscribe) this.unsubscribe()
   }
 
+  componentDidUpdate() {
+    const hidden_panels = document.getElementById("hidden-specific-board-panels")
+    if(hidden_panels) {
+      if(this.props.attributes.specific_board) {
+        document.getElementById("hidden-specific-board-panels").style.visibility='visible'
+      } else{
+        document.getElementById("hidden-specific-board-panels").style.visibility='hidden'
+      }
+    }
+  }
+
   createWidget = () => {
 
     const { UpvotyWp } = window
+
+    console.log('UpvotyWp1111 - ',UpvotyWp)
+
     if (!UpvotyWp || !UpvotyWp.create) return
 
     /**
@@ -64,12 +87,60 @@ class UpvotyBlock extends Component {
     check()
   }
 
+  recreateWidget = () => {
+
+    const recreate = () => {
+    const $widget = document.querySelector('[data-upvoty]')
+    if ($widget) $widget.remove()
+      this.createWidget()
+    }
+
+    recreate()
+  }
+
+  onChangeSpecificBoard = ( specific_board ) => {
+
+    if(specific_board.val){
+      this.props.setAttributes( { specific_board: 'yes' } )
+    } else{
+      this.props.setAttributes( { specific_board: '' } )
+      this.props.setAttributes( { board_hash: '' } )
+      this.props.setAttributes( {  start_page: '' } )
+    }
+
+    this.recreateWidget()
+   }
+
+  onChangeBoardHash = ( board_hash ) => {
+
+     if(this.props.attributes.specific_board) {
+       this.props.setAttributes( { board_hash: board_hash.val } )
+     }
+
+     this.recreateWidget()
+  }
+
+  onChangeStartPage = ( start_page ) => {
+
+    if(this.props.attributes.specific_board) {
+      this.props.setAttributes({start_page: start_page.val})
+    }
+
+     this.recreateWidget()
+  }
+
   render() {
 
     const {
       className,
       attributes
     } = this.props
+
+    const {
+      specific_board,
+      board_hash,
+      start_page
+    } = attributes;
 
     return (
       <div ref={el => this.el = el}>
@@ -80,18 +151,43 @@ class UpvotyBlock extends Component {
           EmptyResponsePlaceholder={ EmptyLoopBlock }
           LoadingResponsePlaceholder={ EmptyLoopBlock }
         />
-        {/* <InspectorControls>
+        { <InspectorControls>
           <PanelBody
             title="Settings"
             initialOpen={ true }
           >
             <PanelRow>
-
-              Settings here
-
+              <ToggleControl
+                label={UGBLocalized.specific_board_label}
+                help={UGBLocalized.specific_board_help}
+                checked={specific_board}
+                onChange={( val ) => this.onChangeSpecificBoard({ val })}
+              />
             </PanelRow>
+            <div id="hidden-specific-board-panels">
+            <PanelRow>
+              <TextControl
+                label={UGBLocalized.board_hash_label}
+                help={UGBLocalized.board_hash_help}
+                value={ board_hash }
+                onChange={ ( val ) => this.onChangeBoardHash( { val } ) }
+              />
+            </PanelRow>
+            <PanelRow>
+              <SelectControl
+                label={UGBLocalized.start_page_label}
+                help={UGBLocalized.start_page_help}
+                options = {[
+                      { label: 'Roadmap Start Page', value: 'roadmap' },
+                      { label: 'Default Board Page', value: '' },
+                  ]}
+                onChange={ ( val ) => this.onChangeStartPage( { val } ) }
+                value={ start_page }
+              />
+            </PanelRow>
+            </div>
           </PanelBody>
-        </InspectorControls> */}
+        </InspectorControls> }
       </div>
     )
   }

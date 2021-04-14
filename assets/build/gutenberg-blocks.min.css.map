@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/gutenberg-blocks/gutenberg-blocks.scss"],"names":[],"mappings":"AAEA,0BACE,eAAA,KAGA,WAAA","file":"gutenberg-blocks.min.css","sourcesContent":["\n/* make gutenberg Upvoty block clickable  */\n.wp-block-tangible-upvoty{\n  pointer-events: none;\n\n  // temp\n  min-height: 100px;\n}\n"]}

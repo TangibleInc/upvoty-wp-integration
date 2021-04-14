@@ -25,15 +25,25 @@ add_action( 'init', function() use ($upvoty) {
     'tangible/upvoty', // Block name must match in JS
     [
       'attributes' => [
-        'settings' => [
+        'specific_board' => [
           'type' => 'string',
           'default' => '',
         ],
+        'board_hash' => [
+          'type' => 'string',
+          'default' => '',
+        ],
+        'start_page' => [
+          'type' => 'string',
+          'default' => '',
+        ],
+
       ],
       'render_callback' => function($attributes, $content) use ($upvoty) {
 
         // Prepare shortcode attributes from block settings
         $atts = [];
+        $atts = $attributes;
 
         // Important: Dynamic embed specifically needed for Gutenberg
         $immediate = false;
