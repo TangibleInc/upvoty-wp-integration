@@ -35,17 +35,6 @@ class UpvotyBlock extends Component {
     if (this.unsubscribe) this.unsubscribe()
   }
 
-  componentDidUpdate() {
-    const hidden_panels = document.getElementById("hidden-specific-board-panels")
-    if(hidden_panels) {
-      if(this.props.attributes.specific_board) {
-        document.getElementById("hidden-specific-board-panels").style.visibility='visible'
-      } else{
-        document.getElementById("hidden-specific-board-panels").style.visibility='hidden'
-      }
-    }
-  }
-
   createWidget = () => {
 
     const { UpvotyWp } = window
@@ -164,7 +153,6 @@ class UpvotyBlock extends Component {
                 onChange={( val ) => this.onChangeSpecificBoard({ val })}
               />
             </PanelRow>
-            <div id="hidden-specific-board-panels">
             <PanelRow>
               <TextControl
                 label={UGBLocalized.board_hash_label}
@@ -180,6 +168,9 @@ class UpvotyBlock extends Component {
                 options = {[
                       { label: 'Roadmap Start Page', value: 'roadmap' },
                       { label: 'Default Board Page', value: '' },
+            <div style={{
+              visibility: specific_board ? 'visible' : 'hidden'
+            }}>
                   ]}
                 onChange={ ( val ) => this.onChangeStartPage( { val } ) }
                 value={ start_page }
