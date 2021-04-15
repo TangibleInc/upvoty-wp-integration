@@ -25,5 +25,13 @@ module.exports = {
       watch: ['assets/src/gutenberg-blocks/**'],
       react: 'wp.element'
     },
+    {
+      task: 'sass',
+      src: 'assets/src/gutenberg-blocks/gutenberg-blocks.scss',
+      dest: 'assets/build/gutenberg-blocks.min.css',
+      watch: [
+        'assets/src/gutenberg-blocks/gutenberg-blocks.scss'
+      ]
+    },
   ]
 }

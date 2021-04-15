@@ -1,0 +1,8 @@
+
+.wp-block-tangible-upvoty {
+
+  // Make Gutenberg Upvoty block selectable, by making its inner content unclickable
+  pointer-events: none;
+
+  min-height: 100px;
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/gutenberg-blocks/gutenberg-blocks.scss"],"names":[],"mappings":"AACA,0BAGE,eAAA,KAEA,WAAA","file":"gutenberg-blocks.min.css","sourcesContent":["\n.wp-block-tangible-upvoty {\n\n  // Make Gutenberg Upvoty block selectable, by making its inner content unclickable\n  pointer-events: none;\n\n  min-height: 100px;\n}\n"]}
