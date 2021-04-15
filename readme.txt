@@ -23,6 +23,13 @@ It includes a shortcode, Gutenberg block, and optional integration with Beaver B
 
 == Changelog ==
 
+= 0.1.8 =
+
+Release Date: 2021-04-15
+
+- Add Improved Gutenberg Support
+- Fix: Make block selectable in Gutenberg interface
+
 = 0.1.7 =
 
 Release Date: 2021-02-10
