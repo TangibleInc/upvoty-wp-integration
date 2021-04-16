@@ -10,7 +10,8 @@
 
 $upvoty->widget = function ( $atts = [], $immediate = true ) use ( $upvoty ) {
 
-  if ( $upvoty->widget_loaded ) return;
+  // Support multiple instances
+  // if ( $upvoty->widget_loaded ) return;
 
   $settings = $upvoty->get_extended_settings();
 
