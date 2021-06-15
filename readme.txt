@@ -23,6 +23,12 @@ It includes a shortcode, Gutenberg block, and optional integration with Beaver B
 
 == Changelog ==
 
+= 0.2.0 =
+
+Release Date: 2021-06-15
+
+- Improve login title style fix
+
 = 0.1.9 =
 
 Release Date: 2021-04-16
