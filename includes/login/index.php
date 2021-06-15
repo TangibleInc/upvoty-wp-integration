@@ -152,9 +152,11 @@ add_action('login_init', function() use ( $upvoty ) {
    * Make screen title not a link - normally it links to site home
    */
   add_action('login_head', function() {
-    ?><style><?php
-    include __DIR__ . 'style.css';
-    ?></style><?php
+    ?><style>
+#login h1 a {
+  cursor: default;
+}
+    </style><?php
   });
 
   /**
